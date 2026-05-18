@@ -211,8 +211,7 @@
   .hero-main img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    mix-blend-mode: multiply;
+    object-fit: cover;
   }
 
   .hero-thumbs {
@@ -237,12 +236,12 @@
     mix-blend-mode: multiply;
   }
   .thumb-kokken {
-    background-image: url('skitse-indretning.png');
+    background-image: url('assets/skitse-indretning.png');
     background-size: cover;
     background-position: center;
   }
   .thumb-bil {
-    background-image: url('bil-skitse.png');
+    background-image: url('assets/bil-skitse.png');
     background-size: 130% auto;
     background-position: center 55%;
   }
@@ -298,7 +297,14 @@
     line-height: 1.25;
   }
 
-  /* ---------- MARQUEE STRIP ---------- */
+  /* ---------- SECTION DIVIDER ---------- */
+  .section-divider {
+    height: 1px;
+    background: var(--rule);
+    margin: 0;
+  }
+
+  /* ---------- MARQUEE STRIP (legacy) ---------- */
   .strip {
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
@@ -523,9 +529,7 @@
   }
   .ejen-card-img img {
     width: 100%; height: 100%;
-    object-fit: contain;
-    padding: 6%;
-    mix-blend-mode: multiply;
+    object-fit: cover;
   }
   .placeholder-img {
     color: var(--ink-soft);
@@ -631,9 +635,7 @@
   }
   .ejen-detail-img img {
     width: 100%; height: 100%;
-    object-fit: contain;
-    padding: 4%;
-    mix-blend-mode: multiply;
+    object-fit: cover;
   }
   .ejen-detail-body {
     padding: clamp(28px, 4vw, 56px);
@@ -965,7 +967,7 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="#top" aria-label="Køhler Ejendomme">
-      <img class="logo-wide" src="logo-wide.png" alt="Køhler Ejendomme ApS">
+      <img class="logo-wide" src="assets/logo-wide.png" alt="Køhler Ejendomme ApS">
     </a>
     <nav>
       <ul>
@@ -986,16 +988,11 @@
     <div class="hero-grid">
       <div>
         <div class="eyebrow">Sorø — etabl. 2024</div>
-        <h1 class="display">
-          Lokale<br>ejendomme.<br>
-          Passet med ro<br>og <em>respekt.</em>
+        <h1 class="display" style="font-size: 88px">
+          Et lille lokalt<br>ejendomsselskab,<br>
+          der udlejer ejendomme<br>i områder vi <em>kender bedst.</em>
         </h1>
-        <p class="hero-lede">
-          Vi opkøber og udvikler mindre ejendomme i nærområder, vi selv
-          har en relation til. Som familieejet selskab vægter vi tæt
-          dialog, langsigtede løsninger og trygge rammer for dem, der
-          bor hos os.
-        </p>
+        <p class="hero-lede">Vi opkøber og udvikler mindre ejendomme i nærområder, vi selv har en relation til.</p>
         <div class="hero-meta">
           <span>Beliggenhed<strong>Sorø &amp; omegn</strong></span>
           <span>Selskab<strong>Familieejet</strong></span>
@@ -1005,7 +1002,7 @@
       <div class="hero-art">
         <span class="ticket">№ 01 — <strong>Sorø Bymidte</strong></span>
         <div class="hero-main">
-          <img src="hus-forfra.png" alt="Akvarel af ejendom set forfra">
+          <img src="assets/hus-forfra.png" alt="Ejendommen set forfra">
         </div>
         <div class="hero-thumbs">
           <figure class="thumb">
@@ -1022,40 +1019,21 @@
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="strip" aria-hidden="true">
-  <div class="strip-track">
-    <span>Bevaret arkitektur <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2" fill="currentColor"/></svg> Energirigtig drift <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2" fill="currentColor"/></svg> Personlig kommunikation <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2" fill="currentColor"/></svg> Lokalt forankret <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2" fill="currentColor"/></svg> Detaljen først <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2" fill="currentColor"/></svg> Sorø Kommune <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2" fill="currentColor"/></svg></span>
-    <span>Bevaret arkitektur <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2" fill="currentColor"/></svg> Energirigtig drift <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2" fill="currentColor"/></svg> Personlig kommunikation <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2" fill="currentColor"/></svg> Lokalt forankret <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2" fill="currentColor"/></svg> Detaljen først <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2" fill="currentColor"/></svg> Sorø Kommune <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2" fill="currentColor"/></svg></span>
-  </div>
-</div>
+<!-- Tynd skillelinje mellem hero og Om os -->
+<div class="section-divider" aria-hidden="true"></div>
 
 <!-- OM OS -->
 <section class="om" id="om">
   <div class="wrap">
     <div class="sec-label">
       <span class="idx">01 / Om os</span>
-      <span class="name">Et familieejet hus</span>
+      <span class="name">OM SELSKABET</span>
     </div>
     <div class="om-grid reveal">
       <div class="om-copy om-copy-wide">
-        <p>
-          Køhler Ejendomme ApS er et mindre, familieejet ejendomsselskab, der
-          opkøber og udvikler eksisterende ejendomme i Sorø og omegn. Vores
-          fokus er ikke at bygge mest — men at bygge bedst på det, der allerede
-          står. Et hus, en facade, et stykke historie der fortjener at blive
-          ført videre.
-        </p>
-        <p>
-          Selskabet er ejet og drevet af far og søn, Anders Køhler-Johansen og
-          Malthe Køhler-Johansen — Anders med årtiers erfaring som arkitekt og
-          en sjælden sans for detaljen, og Malthe med en bred faglig vifte
-          inden for energi- og driftsoptimering af eksisterende bygninger.
-        </p>
-        <div class="pull">
-          “Vi ejer få ejendomme, men vi passer godt på dem —
-          med omtanke for både bygningerne og menneskene i dem.”
-        </div>
+        <p>Køhler Ejendomme ApS er et mindre, familieejet ejendomsselskab, der opkøber og udvikler eksisterende ejendomme i Sorø og omegn. Vores fokus er ikke at bygge mest - men at bygge bedst på det, der allerede står, og ser muligheder når vi udvikler nye boliglejemål.</p>
+        <p>Selskabet er ejet og drevet af far og søn, Anders Køhler-Johansen og Malthe Køhler-Johansen - Anders med årtiers erfaring som arkitekt, og Malthe med en bred faglig vifte inden for energi- og driftsoptimering af eksisterende bygninger.</p>
+        <div class="pull">“Vi ejer få ejendomme, men vi gør os umage med dem vi har"</div>
       </div>
     </div>
 
@@ -1090,16 +1068,12 @@
     <h2 class="sec-title reveal" style="max-width: 18ch;">
       Vores <em>ejendomme.</em>
     </h2>
-    <p class="reveal" style="max-width: 56ch; font-size: 16px; color: var(--ink-2); margin: 0 0 36px;">
-      Vi opkøber og udvikler ejendomme i Sorø Kommune og omegn — også i de
-      omkringliggende kommuner. Både nyere og ældre ejendomme, hvor vi fornyer
-      med respekt for arkitekturen.
-    </p>
+    <p class="reveal" style="max-width: 56ch; font-size: 16px; color: var(--ink-2); margin: 0 0 36px;">Vi opkøber og udvikler ejendomme i Sorø Kommune og omegn - også i de omkringliggende kommuner. Herunder kan du læse om vores ejendomme, og følge med i nye projekter løbende.</p>
 
     <div class="ejen-cards reveal">
       <button type="button" class="ejen-card" data-expand="ejen-01" aria-expanded="false" aria-controls="ejen-01">
         <div class="ejen-card-img">
-          <img src="hus-have.png" alt="">
+          <img src="assets/hus-bagfra.png" alt="">
         </div>
         <div class="ejen-card-body">
           <span class="ejen-card-status">Aktiv ejendom</span>
@@ -1149,18 +1123,12 @@
       </button>
       <div class="ejen-detail-grid">
         <div class="ejen-detail-img">
-          <img src="hus-forfra.png" alt="Akvarel af ejendommen set forfra">
+          <img src="assets/hus-forfra.png" alt="Ejendommen set forfra">
         </div>
         <div class="ejen-detail-body">
           <div class="place">Sorø Bymidte · Sjælland</div>
           <h3>Et hus i <em>hjertet</em><br>af Sorø.</h3>
-          <p>
-            Vores nuværende ejendom ligger unikt placeret i Sorø bymidte —
-            tæt på sø, akademi og hovedgade. Bygningen rummer to selvstændige
-            boligenheder med hver sin karakter, og er gennemgået med fokus
-            på at bevare husets oprindelige sjæl, kombineret med en moderne,
-            energirigtig drift.
-          </p>
+          <p>Vores første ejendom ligger unikt placeret i Sorø bymidte - tæt på søen, Sorø Akademi og hovedgade - og kun få minutters gang til flere indkøbsmuligheder. Bygningen rummer to selvstændige boligenheder med hver sin private have.</p>
           <div class="ejen-specs">
             <div><div class="k">Enheder</div><div class="v">2 boliger</div></div>
             <div><div class="k">Beliggenhed</div><div class="v">Bymidte</div></div>
@@ -1179,7 +1147,7 @@
       <span class="idx">03 / Hvem vi er</span>
       <span class="name">To generationer</span>
     </div>
-    <h2 class="sec-title reveal">Mennesker, ikke<br>en <em>administration.</em></h2>
+    <h2 class="sec-title reveal">Vi håndterer den daglige drift</h2>
     <p class="hvem-intro reveal">
       Hos Køhler Ejendomme er der ingen mellemled. Det er os to, der svarer
       telefonen, kigger forbi og holder hånd i hanke med tingene.
@@ -1189,7 +1157,7 @@
       <article class="person">
         <div class="person-photo">
           <span class="corner">Medejer · Arkitekt</span>
-          <img src="anders.png" alt="Anders Køhler-Johansen">
+          <img src="assets/anders.png" alt="Anders Køhler-Johansen">
         </div>
         <h3>Anders Køhler-<br>Johansen</h3>
         <div class="role">Medejer &amp; arkitekt</div>
@@ -1206,7 +1174,7 @@
       <article class="person">
         <div class="person-photo">
           <span class="corner">Medejer · Drift &amp; energi</span>
-          <img src="malthe.png" alt="Malthe Køhler-Johansen">
+          <img src="assets/malthe.png" alt="Malthe Køhler-Johansen">
         </div>
         <h3>Malthe Køhler-<br>Johansen</h3>
         <div class="role">Medejer &amp; driftsansvarlig</div>
@@ -1312,15 +1280,15 @@
     <div class="foot-top">
       <div class="foot-brand">
         <div class="logo-line">
-          <img src="logo-wide.png" alt="Køhler Ejendomme ApS">
+          <img src="assets/logo-wide.png" alt="Køhler Ejendomme ApS">
         </div>
-        <p>Et stille hus<br>i en støjende branche.</p>
+        <p>Et lille lokalt ejendomsselskab</p>
       </div>
       <div class="foot-col">
         <h5>Kontakt</h5>
         <ul>
           <li>Malthe Køhler-Johansen</li>
-          <li><a href="/cdn-cgi/l/email-protection#3c515d50485459574a555748534e7c5b515d5550125f5351"><span class="__cf_email__" data-cfemail="aec3cfc2dac6cbc5d8c7c5dac1dceec9c3cfc7c280cdc1c3">[email&#160;protected]</span></a></li>
+          <li><a href="/cdn-cgi/l/email-protection#81ece0edf5e9e4eaf7e8eaf5eef3c1e6ece0e8edafe2eeec"><span class="__cf_email__" data-cfemail="8fe2eee3fbe7eae4f9e6e4fbe0fdcfe8e2eee6e3a1ece0e2">[email&#160;protected]</span></a></li>
           <li>Sorø, Sjælland</li>
         </ul>
       </div>
