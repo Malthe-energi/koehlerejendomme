@@ -32,6 +32,7 @@
 
   html, body {
     margin: 0;
+    overflow-x: clip;
     background: var(--paper);
     color: var(--ink);
     font-family: var(--sans);
@@ -116,8 +117,65 @@
     transition: background .2s, color .2s;
   }
   .nav-cta:hover { background: var(--ink); color: var(--paper); }
+
+  /* Hamburger button — hidden on desktop */
+  .nav-toggle {
+    display: none;
+    width: 46px; height: 46px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 5px;
+    padding: 0;
+    flex: none;
+  }
+  .nav-toggle span {
+    display: block; width: 18px; height: 1.5px;
+    background: var(--ink);
+    transition: transform .25s ease, opacity .2s ease;
+  }
+  .nav-inner.open .nav-toggle span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-inner.open .nav-toggle span:nth-child(2) { opacity: 0; }
+  .nav-inner.open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .nav-menu-cta { display: none; }
+
   @media (max-width: 820px) {
-    .nav ul { display: none; }
+    .nav-inner { height: 76px; }
+    .nav-toggle { display: inline-flex; }
+    .nav-cta-bar { display: none; }
+    .nav-menu {
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      background: color-mix(in srgb, var(--paper) 97%, transparent);
+      -webkit-backdrop-filter: saturate(120%) blur(10px);
+      backdrop-filter: saturate(120%) blur(10px);
+      border-bottom: 1px solid var(--rule);
+      box-shadow: 0 24px 44px -20px rgba(28,29,26,.28);
+      display: none;
+    }
+    .nav-inner.open .nav-menu { display: block; }
+    .nav-menu ul {
+      flex-direction: column;
+      gap: 0;
+      padding: 4px var(--pad) 20px;
+    }
+    .nav-menu ul li { width: 100%; }
+    .nav-menu ul a {
+      display: block;
+      padding: 16px 2px;
+      font-size: 17px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-menu-cta { display: block; margin-top: 16px; }
+    .nav-menu-cta a {
+      border: 1px solid var(--line) !important;
+      border-radius: 999px;
+      text-align: center;
+      padding: 14px 18px !important;
+    }
   }
 
   /* ---------- HERO ---------- */
@@ -153,6 +211,7 @@
     letter-spacing: -.015em;
     margin: 0 0 22px;
     color: var(--ink);
+    overflow-wrap: break-word;
   }
   h1.display em {
     font-style: italic;
@@ -979,14 +1038,18 @@
     <a class="brand" href="#top" aria-label="Køhler Ejendomme">
       <img class="logo-wide" src="assets/logo-wide.png" alt="Køhler Ejendomme ApS">
     </a>
-    <nav>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="primary-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-menu" id="primary-menu">
       <ul>
         <li><a href="#om">Om os</a></li>
         <li><a href="#ejendomme">Ejendomme</a></li>
         <li><a href="#hvem">Hvem vi er</a></li>
+        <li class="nav-menu-cta"><a href="#venteliste" class="nav-cta">Skriv dig op</a></li>
       </ul>
     </nav>
-    <a href="#venteliste" class="nav-cta">Skriv dig op</a>
+    <a href="#venteliste" class="nav-cta nav-cta-bar">Skriv dig op</a>
   </div>
 </header>
 
@@ -998,7 +1061,7 @@
     <div class="hero-grid">
       <div>
         <div class="eyebrow">Sorø — etabl. 2024</div>
-        <h1 class="display" style="font-size: 88px">
+        <h1 class="display" style="font-size: clamp(30px, 7.4vw, 88px)">
           Et lille lokalt<br>ejendomsselskab,<br>
           der udlejer ejendomme<br>i områder vi <em>kender bedst.</em>
         </h1>
@@ -1167,7 +1230,7 @@
       <article class="person">
         <div class="person-photo">
           <span class="corner">Medejer · Arkitekt</span>
-          <img src="assets/anders.png" alt="Anders Køhler-Johansen" style="height: 320px; width: 210px; opacity: 1">
+          <img src="assets/anders.png" alt="Anders Køhler-Johansen">
         </div>
         <div class="person-body">
           <h3>Anders Køhler-Johansen</h3>
@@ -1186,7 +1249,7 @@
       <article class="person">
         <div class="person-photo">
           <span class="corner">Medejer · Drift &amp; energi</span>
-          <img src="assets/malthe.png" alt="Malthe Køhler-Johansen" style="width: 210px; height: 320px; opacity: 1">
+          <img src="assets/malthe.png" alt="Malthe Køhler-Johansen" style="transform: scale(1.16); transform-origin: center 30%">
         </div>
         <div class="person-body">
           <h3>Malthe Køhler-Johansen</h3>
@@ -1302,7 +1365,7 @@
         <h5>Kontakt</h5>
         <ul>
           <li>Malthe Køhler-Johansen</li>
-          <li><a href="/cdn-cgi/l/email-protection#513c303d2539343a27383a253e2311363c30383d7f323e3c"><span class="__cf_email__" data-cfemail="deb3bfb2aab6bbb5a8b7b5aab1ac9eb9b3bfb7b2f0bdb1b3">[email&#160;protected]</span></a></li>
+          <li><a href="/cdn-cgi/l/email-protection#e4898588908c818f928d8f908b96a48389858d88ca878b89"><span class="__cf_email__" data-cfemail="a1ccc0cdd5c9c4cad7c8cad5ced3e1c6ccc0c8cd8fc2cecc">[email&#160;protected]</span></a></li>
           <li>Sorø, Sjælland</li>
         </ul>
       </div>
@@ -1323,6 +1386,33 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // mobile nav toggle
+  (function () {
+    const inner = document.querySelector('.nav-inner');
+    const btn = document.querySelector('.nav-toggle');
+    if (inner && btn) {
+      btn.addEventListener('click', function () {
+        const open = inner.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Luk menu' : 'Åbn menu');
+      });
+      inner.querySelectorAll('.nav-menu a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          inner.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', 'Åbn menu');
+        });
+      });
+      document.addEventListener('click', function (e) {
+        if (inner.classList.contains('open') && !inner.contains(e.target)) {
+          inner.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', 'Åbn menu');
+        }
+      });
+    }
+  })();
+
   // scroll reveal
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
